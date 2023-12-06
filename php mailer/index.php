@@ -57,7 +57,7 @@ try {
 
         if ($messageCursor !== null) {
             // Message details
-            $subject = 'Your Subject';
+            $subject = 'Your Time Capsule Has Arrived';
             $messageDate = $messageCursor['date'];
             $messageContent = $messageCursor['message'];
 
@@ -77,7 +77,7 @@ try {
                     h1, p {
                         color: white;
                         font-family: 'Spirax', Arial, sans-serif;
-                        padding: 10px; /* Add padding to both h1 and p elements */
+                        padding: 20px; /* Add padding to both h1 and p elements */
                     }
 
                     div {
@@ -91,7 +91,7 @@ try {
                     <h1>Your message has found its way to you. Read it below</h1>
                     <p>Dear Traveler,</p>
                     <p>{$messageContent}</p>
-                    <p>Sea You Soon<br></p>
+                    <p >Sea You Soon<br></p>
                 </div>
             </body>
 
@@ -99,7 +99,7 @@ try {
             ";
 
             // Set email parameters
-            $mail->setFrom('azhars137@gmail.com', 'Your Name');
+            $mail->setFrom('azhars137@gmail.com', 'SeaYouSoon');
             $mail->addAddress($email);
             $mail->Subject = $subject;
             $mail->isHTML(true); // Set email format to HTML
