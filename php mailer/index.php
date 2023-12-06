@@ -61,41 +61,41 @@ try {
             $messageDate = $messageCursor['date'];
             $messageContent = $messageCursor['message'];
 
+            // Absolute URL for the image
+            $imageUrl = 'image/stamp.png'; // Replace with the actual URL of your image
+
             // Email content
             $emailContent = "
-            <html>
+                <html>
+                <head>
+                    <style>
+                        body {
+                            background-color: #3E4450;
+                        }
+                        h1, p {
+                            color: white;
+                            padding: 20px;
+                        }
+                        div {
+                            text-align: center;
+                        }
+                        img{
+                            margin-top:20px;
+                        }
+                    </style>
+                </head>
+                <body style='background-color: #3E4450;'>
 
-            <head>
-                <style>
-                    @import url('https://fonts.googleapis.com/css2?family=Spirax&display=swap');
-
-                    body {
-                        font-family: 'Spirax', Arial, sans-serif;
-                        background-color: #3E4450;
-                    }
-
-                    h1, p {
-                        color: white;
-                        font-family: 'Spirax', Arial, sans-serif;
-                        padding: 20px; /* Add padding to both h1 and p elements */
-                    }
-
-                    div {
-                        text-align: center;
-                    }
-                </style>
-            </head>
-
-            <body style='background-color: #3E4450;'>
-                <div>
-                    <h1>Your message has found its way to you. Read it below</h1>
-                    <p>Dear Traveler,</p>
-                    <p>{$messageContent}</p>
-                    <p >Sea You Soon<br></p>
-                </div>
-            </body>
-
-            </html>
+                <img src='cid:logo_2u'  alt='Sea You Soon Image'>
+                    <div>
+                        <h1>Your message has found its way to you. Read it below</h1>
+                        <p>Dear Traveler,</p>
+                        <p>{$messageContent}</p>
+                        <p>Sea You Soon<br></p>
+                        
+                    </div>
+                </body>
+                </html>
             ";
 
             // Set email parameters
@@ -104,6 +104,7 @@ try {
             $mail->Subject = $subject;
             $mail->isHTML(true); // Set email format to HTML
             $mail->Body = $emailContent;
+            $mail->AddEmbeddedImage($imageUrl, 'logo_2u');
 
             // Debugging output
             echo "Attempting to send email to $email<br>";
