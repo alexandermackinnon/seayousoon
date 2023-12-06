@@ -23,7 +23,7 @@ try {
             $_SESSION['user_id'] = $user['_id'];
             $_SESSION['user_name'] = $username;
             
-            header("Location: process_message.php");
+            header("Location: capsule.php");
             exit();
         } else {
             echo "Invalid username or password.";
@@ -39,7 +39,7 @@ try {
 
 <head>
     <meta charset="UTF-8">
-    <title>Login | SEA YOU SOON</title>
+    <title>Login | Sea You Soon</title>
     <link rel="stylesheet" type="text/css" href="./SEA YOU SOON _ A REFLECTIVE SPACE OF FORESIGHT_files/main.css">
     <link rel="stylesheet" href="main.css">
 </head>
@@ -73,7 +73,7 @@ try {
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required="">
                 </div>
-                <button class="button rounded-btn" type="submit" name="login">Login</button>
+                <button class="button blue-btn rounded-btn" type="submit" name="login"><span>Login</span></button>
             </form>
         </div>
     </section>

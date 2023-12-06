@@ -31,15 +31,8 @@ ob_start();
         <div class="landing-inner">
             <h1>SEA YOU SOON</h1>
             <img class="bottle" src="assets/images/bottle.png" alt="Glass bottle">
-            <a href="process_message.php"> <button class="button circle-btn bottle-up-btn">
-                    <svg aria-hidden="true" class="progress" width="70" height="70" viewbox="0 0 70 70">
-                        <path class="progress__circle"
-                            d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z" />
-                        <path class="progress__path"
-                            d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z"
-                            pathLength="1" />
-                    </svg>
-                    <span>Bottle up</span>
+            <a href="capsule.php"> <button class="button circle-btn bottle-up-btn">
+                    <span><span>Bottle up</span></span>
                 </button></a>
         </div>
     </section>
@@ -48,21 +41,6 @@ ob_start();
     <?php
         include 'footer.php';
     ?>
-
-    <script>
-    var backgroundMusic = document.getElementById("backgroundMusic");
-    window.addEventListener('load', function() {
-        backgroundMusic.play();
-    });
-
-    function toggleBackgroundMusic() {
-        if (backgroundMusic.paused) {
-            backgroundMusic.play();
-        } else {
-            backgroundMusic.pause();
-        }
-    }
-    </script>
 </body>
 
 </html>

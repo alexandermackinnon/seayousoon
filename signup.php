@@ -3,8 +3,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 try {
     $client = new MongoDB\Client("mongodb+srv://infoseayousoon:UNy8fZIiGFex0pWi@cart351.vigmtxs.mongodb.net/?retryWrites=true&w=majority");
-    echo("Valid connection");
-    echo("<br>");
+    // echo("Valid connection");
 
     $collection = $client->CART351->Users;
 
@@ -55,7 +54,7 @@ try {
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required="">
                 </div>
-                <button class="button rounded-btn" type="submit" name="signup">Signup</button>
+                <button class="button clear-btn rounded-btn" type="submit" name="signup"><span>Sign up</span></button>
             </form>
         </div>
     </section>

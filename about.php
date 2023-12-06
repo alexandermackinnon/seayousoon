@@ -45,21 +45,6 @@ ob_start();
     <?php
         include 'footer.php';
     ?>
-
-    <script>
-    var backgroundMusic = document.getElementById("backgroundMusic");
-    window.addEventListener('load', function() {
-        backgroundMusic.play();
-    });
-
-    function toggleBackgroundMusic() {
-        if (backgroundMusic.paused) {
-            backgroundMusic.play();
-        } else {
-            backgroundMusic.pause();
-        }
-    }
-    </script>
 </body>
 
 </html>

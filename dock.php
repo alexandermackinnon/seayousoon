@@ -180,21 +180,6 @@ h1 {
     <?php
         include 'footer.php';
     ?>
-
-    <script>
-    var backgroundMusic = document.getElementById("backgroundMusic");
-    window.addEventListener('load', function() {
-        backgroundMusic.play();
-    });
-
-    function toggleBackgroundMusic() {
-        if (backgroundMusic.paused) {
-            backgroundMusic.play();
-        } else {
-            backgroundMusic.pause();
-        }
-    }
-    </script>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

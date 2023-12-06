@@ -46,6 +46,7 @@ try {
             } else {
                 echo "Error sending message.";
             }
+            
             exit(); // Add this to stop further execution after handling the form submission
         }
     }
@@ -58,7 +59,7 @@ try {
 <html>
 
 <head>
-    <title>SEA YOU SOON | A REFLECTIVE SPACE OF FORESIGHT</title>
+    <title>Capsule | Sea You Soon</title>
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <script type="text/javascript" src="js/wave.js"></script>
     <meta charset="UTF-8" />
@@ -86,31 +87,42 @@ try {
                             <label for="message">Message</label>
                             <textarea rows="10" id="message" name="message" required></textarea>
                         </div>
-                        <button class="button rounded-btn" type="submit">Next</button>
+                        <button class="button clear-btn rounded-btn" type="submit"><span>Next</span></button>
                     </form>
                 </div>
 
                 <div class="form-step" id="step2" style="display: none;">
                     <h2>INTO THE SEA!</h2>
-                    <form onsubmit="return sendMessage();">
-                        <div>
-                            <button class="button rounded-btn link" onclick="showDateSelector()" id="pickDateBtn">Pick a
-                                date of arrival</button>
-                            <button class="button rounded-btn link" onclick="hideDateSelector()" id="surpriseMeBtn">Let
-                                the waves decide</button>
+                    <form action="capsule.php" method="post" onsubmit="return sendMessage();">
+                        <div class="dateType">
+                            <a class="button clear-btn rounded-btn" onclick="showDateSelector()"
+                                id="pickDateBtn"><span>Pick a
+                                    date of arrival</span></a>
+                            <a class="button clear-btn rounded-btn" onclick="hideDateSelector()"
+                                id="surpriseMeBtn"><span>Let
+                                    the waves decide</span></a>
                         </div>
                         <div id="dateSelector" style="display: none;">
                             <label for="arrivalDate">Select Date of Arrival:</label>
                             <input type="date" id="arrivalDate" name="arrivalDate">
                         </div>
-                        <button class="button rounded-btn" type="submit">Send</button>
+                        <button class="button blue-btn rounded-btn" type="submit"
+                            name="send_message"><span>Send</span></button>
                     </form>
+                </div>
+                <div class="capsule-form-ctn" id="step3" style="display: none;">
+                    <div class="form-step">
+                        <h2>AND WE'RE OFF!</h2>
+                        <p>Congrats! You have let out your capsule in the world. Sea you soon!</p>
+                        <a href="index.php" class="button blue-btn rounded-btn"><span>Return to home</span></a>
+                    </div>
                 </div>
 
                 <script>
                 function showStep2() {
                     document.getElementById('step1').style.display = 'none';
                     document.getElementById('step2').style.display = 'flex';
+                    document.getElementById('step3').style.display = 'none';
                     return false;
                 }
 
@@ -144,12 +156,17 @@ try {
                     xhr.onreadystatechange = function() {
                         if (xhr.readyState == 4 && xhr.status == 200) {
                             // Handle the response from the server if needed
-                            console.log(xhr.responseText);
+                            // console.log(xhr.responseText);
                         }
                     };
 
                     // Send the form data
                     xhr.send(formData);
+
+                    // Show end screen
+                    document.getElementById('step1').style.display = 'none';
+                    document.getElementById('step2').style.display = 'none';
+                    document.getElementById('step3').style.display = 'flex';
 
                     // Prevent the default form submission
                     return false;
@@ -162,18 +179,6 @@ try {
     <?php
     include 'footer.php';
     ?>
-
-    <script>
-    var backgroundMusic = document.getElementById("backgroundMusic");
-
-    function toggleBackgroundMusic() {
-        if (backgroundMusic.paused) {
-            backgroundMusic.play();
-        } else {
-            backgroundMusic.pause();
-        }
-    }
-    </script>
 </body>
 
 </html>
