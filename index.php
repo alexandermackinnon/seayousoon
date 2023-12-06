@@ -9,6 +9,7 @@ ob_start();
 <head>
     <title>SEA YOU SOON | A REFLECTIVE SPACE OF FORESIGHT</title>
     <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <script type="text/javascript" src="js/wave.js"></script>
     <meta charset="UTF-8" />
 </head>
 
@@ -29,6 +30,7 @@ ob_start();
         <!-- <script type="module" src="main.js"></script> -->
         <div class="landing-inner">
             <h1>SEA YOU SOON</h1>
+            <img class="bottle" src="assets/images/bottle.png" alt="Glass bottle">
             <a href="process_message.php"> <button class="button circle-btn bottle-up-btn">
                     <svg aria-hidden="true" class="progress" width="70" height="70" viewbox="0 0 70 70">
                         <path class="progress__circle"

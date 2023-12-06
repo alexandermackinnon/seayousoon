@@ -9,6 +9,7 @@ ob_start();
 <head>
     <title>SEA YOU SOON | A REFLECTIVE SPACE OF FORESIGHT</title>
     <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <script type="text/javascript" src="js/wave.js"></script>
     <meta charset="UTF-8" />
 </head>
 
