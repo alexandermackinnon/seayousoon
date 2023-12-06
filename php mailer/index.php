@@ -58,14 +58,52 @@ try {
         if ($messageCursor !== null) {
             // Message details
             $subject = 'Your Subject';
-            $body = 'Message Date: ' . $messageCursor['date'] . '<br>';
-            $body .= 'Message: ' . $messageCursor['message'];
+            $messageDate = $messageCursor['date'];
+            $messageContent = $messageCursor['message'];
+
+            // Email content
+            $emailContent = "
+            <html>
+
+            <head>
+                <style>
+                    @import url('https://fonts.googleapis.com/css2?family=Spirax&display=swap');
+
+                    body {
+                        font-family: 'Spirax', Arial, sans-serif;
+                        background-color: #3E4450;
+                    }
+
+                    h1, p {
+                        color: white;
+                        font-family: 'Spirax', Arial, sans-serif;
+                        padding: 10px; /* Add padding to both h1 and p elements */
+                    }
+
+                    div {
+                        text-align: center;
+                    }
+                </style>
+            </head>
+
+            <body style='background-color: #3E4450;'>
+                <div>
+                    <h1>Your message has found its way to you. Read it below</h1>
+                    <p>Dear Traveler,</p>
+                    <p>{$messageContent}</p>
+                    <p>Sea You Soon<br></p>
+                </div>
+            </body>
+
+            </html>
+            ";
 
             // Set email parameters
             $mail->setFrom('azhars137@gmail.com', 'Your Name');
             $mail->addAddress($email);
             $mail->Subject = $subject;
-            $mail->Body = $body;
+            $mail->isHTML(true); // Set email format to HTML
+            $mail->Body = $emailContent;
 
             // Debugging output
             echo "Attempting to send email to $email<br>";
