@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -20,7 +21,7 @@ try {
             echo "Login successful!";
             
             $_SESSION['user_id'] = $user['_id'];
-
+            $_SESSION['user_name'] = $username;
             
             header("Location: process_message.php");
             exit();
@@ -47,6 +48,22 @@ try {
     <!-- Login Section -->
     <section class="login">
         <div class="login-ctn">
+            <!-- Errors -->
+            <?php 
+                if (isset($_GET['error'])) { 
+            ?> <div class="login-message error">
+                <?php 
+                    echo $_GET['error']; 
+                ?></div>
+            <?php } ?>
+            <!-- Notices -->
+            <?php 
+                if (isset($_GET['notice'])) { 
+            ?> <div class="login-message notice">
+                <?php 
+                    echo $_GET['notice']; 
+                ?></div>
+            <?php } ?>
             <form action="login.php" method="post">
                 <div class="input-group">
                     <label for="username">Username</label>

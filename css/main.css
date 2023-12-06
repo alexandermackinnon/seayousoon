@@ -94,7 +94,15 @@ button:focus-visible {
   padding: 1.5rem 3rem;
   margin: 0;
   position: relative;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.button img {
+  max-height: 24px;
+  max-width: 24px;
 }
 
 .button::before,
@@ -289,6 +297,46 @@ header nav {
   display: flex;
   gap: 20px;
   align-items: center;
+}
+
+/* Style for the dropdown container */
+header .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+header .button {
+  padding: 10px 30px;
+}
+
+/* Style for the dropdown content (hidden by default) */
+header .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 55px;
+  right: 0;
+  z-index: 1;
+}
+
+/* Style for the dropdown links */
+header .dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  transition: all 0.4s ease;
+  text-decoration: none;
+  display: block;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+
+/* Change color on hover */
+header .dropdown-content a:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+/* Show the dropdown content when the dropdown button is clicked */
+header .show {
+  display: block;
 }
 
 /* ---------- FOOTER ---------- */

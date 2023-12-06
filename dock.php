@@ -1,4 +1,9 @@
 <?php
+session_start();
+
+// Make this page login-only
+require_once('authentication.php');
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 // Initialize scroll count

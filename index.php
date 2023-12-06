@@ -1,3 +1,8 @@
+<?php
+session_start();
+ob_start();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -24,7 +29,7 @@
         <!-- <script type="module" src="main.js"></script> -->
         <div class="landing-inner">
             <h1>SEA YOU SOON</h1>
-            <a href="capsule.php"> <button class="button circle-btn bottle-up-btn">
+            <a href="process_message.php"> <button class="button circle-btn bottle-up-btn">
                     <svg aria-hidden="true" class="progress" width="70" height="70" viewbox="0 0 70 70">
                         <path class="progress__circle"
                             d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z" />
