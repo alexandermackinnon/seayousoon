@@ -8,11 +8,10 @@ use PHPMailer\PHPMailer\Exception;
 
 // Set the time zone to 'America/New_York'
 date_default_timezone_set('America/New_York');
-phpinfo();
 
 try {
     // Connect to MongoDB
-    $client = new MongoDB\Client("mongodb+srv://infoseayousoon:UNy8fZIiGFex0pWi@cart351.vigmtxs.mongodb.net/?retryWrites=true&w=majority");
+    require_once('db.php');
 
     // Select MongoDB collections
     $userCollection = $client->CART351->Users;

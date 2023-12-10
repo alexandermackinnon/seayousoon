@@ -11,7 +11,7 @@ $scrollCount = isset($_POST['scrollCount']) ? $_POST['scrollCount'] : 0;
 
 try {
     // MongoDB connection
-    $client = new MongoDB\Client("mongodb+srv://infoseayousoon:UNy8fZIiGFex0pWi@cart351.vigmtxs.mongodb.net/?retryWrites=true&w=majority");
+    require_once('db.php');
     $messageCollection = $client->CART351->Messages;
     $coordsCollection = $client->CART351->Coords;
 

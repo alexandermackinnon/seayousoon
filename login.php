@@ -6,9 +6,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 try {
     // Connect to MongoDB
-    $client = new MongoDB\Client("mongodb+srv://infoseayousoon:UNy8fZIiGFex0pWi@cart351.vigmtxs.mongodb.net/?retryWrites=true&w=majority");
+    require_once('db.php');
 
-     // Select MongoDB collections
+    // Select MongoDB collections
     $collection = $client->CART351->Users;
 
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
