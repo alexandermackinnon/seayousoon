@@ -33,9 +33,9 @@ try {
 
 <head>
     <meta charset="UTF-8">
-    <title>Signup | SEA YOU SOON</title>
+    <title>Signup | Sea You Soon</title>
     <link rel="stylesheet" type="text/css" href="./SEA YOU SOON _ A REFLECTIVE SPACE OF FORESIGHT_files/main.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>

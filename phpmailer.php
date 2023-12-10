@@ -32,96 +32,79 @@ try {
     // Get today's date in the format 'Y-m-d'
     $todayDate = date('Y-m-d');
 
-    // Create an array to track sent emails
-    $sentEmails = [];
+    // Fetch messages from Messages collection that are past their arrival date and active
+    $pastDueMessagesCursor = $messageCollection->find([
+        'arrivalDate' => ['$lt' => $todayDate],
+        'active' => true
+    ]);
 
-    // Fetch data from Users collection
-    $usersCursor = $userCollection->find([]);
+    // Iterate through past due messages and send emails
+    foreach ($pastDueMessagesCursor as $pastDueMessage) {
+        $userId = $pastDueMessage['userId'];
+        $email = $userCollection->findOne(['_id' => new MongoDB\BSON\ObjectId($userId)])['email'];
 
-    // Iterate through users and send emails
-    foreach ($usersCursor as $user) {
-        $userId = $user['userId'];
-        $email = $user['email'];
+        // Message details
+        $subject = 'Your Time Capsule Has Arrived';
+        $messageContent = $pastDueMessage['message'];
 
-        // Check if email has already been sent for this user
-        if (in_array($email, $sentEmails)) {
-            echo "Email already sent to $email today<br>";
-            continue; // Skip to the next user
-        }
+        // Absolute URL for the image
+        $imageUrl = 'assets/images/stamp.png'; // Replace with the actual URL of your image
 
-        // Fetch data from Messages collection for the user using the userId and today's date
-        $messageCursor = $messageCollection->findOne(['user_id' => $userId, 'arrivalDate' => $todayDate]);
+        // Email content
+        $emailContent = "
+            <html>
+            <head>
+                <style>
+                    body {
+                        background-color: #3E4450;
+                    }
+                    h1, p {
+                        color: white;
+                        padding: 20px;
+                    }
+                    div {
+                        text-align: center;
+                    }
+                    img{
+                        margin-top:20px;
+                    }
+                </style>
+            </head>
+            <body style='background-color: #3E4450;'>
 
-        // Debugging output with detailed information
-        echo "Checking user $email (User ID: $userId) for today's date $todayDate<br>";
+            <img src='cid:logo_2u'  alt='Sea You Soon Image'>
+                <div>
+                    <h1>Your message has found its way to you. Read it below</h1>
+                    <p>Dear Traveler,</p>
+                    <p>{$messageContent}</p>
+                    <p>Sea You Soon<br></p>
+                    
+                </div>
+            </body>
+            </html>
+        ";
 
-        if ($messageCursor !== null) {
-            // Message details
-            $subject = 'Your Time Capsule Has Arrived';
-            $messageDate = $messageCursor['date'];
-            $messageContent = $messageCursor['message'];
+        // Set email parameters
+        $mail->setFrom('azhars137@gmail.com', 'Sea You Soon');
+        $mail->addAddress($email);
+        $mail->Subject = $subject;
+        $mail->isHTML(true); // Set email format to HTML
+        $mail->Body = $emailContent;
+        $mail->AddEmbeddedImage($imageUrl, 'logo_2u');
 
-            // Absolute URL for the image
-            $imageUrl = 'assets/images/stamp.png'; // Replace with the actual URL of your image
+        // Debugging output
+        echo "Attempting to send email<br>";
 
-            // Email content
-            $emailContent = "
-                <html>
-                <head>
-                    <style>
-                        body {
-                            background-color: #3E4450;
-                        }
-                        h1, p {
-                            color: white;
-                            padding: 20px;
-                        }
-                        div {
-                            text-align: center;
-                        }
-                        img{
-                            margin-top:20px;
-                        }
-                    </style>
-                </head>
-                <body style='background-color: #3E4450;'>
+        // Uncomment the following line to actually send emails
+        $mail->send();
 
-                <img src='cid:logo_2u'  alt='Sea You Soon Image'>
-                    <div>
-                        <h1>Your message has found its way to you. Read it below</h1>
-                        <p>Dear Traveler,</p>
-                        <p>{$messageContent}</p>
-                        <p>Sea You Soon<br></p>
-                        
-                    </div>
-                </body>
-                </html>
-            ";
-
-            // Set email parameters
-            $mail->setFrom('azhars137@gmail.com', 'SeaYouSoon');
-            $mail->addAddress($email);
-            $mail->Subject = $subject;
-            $mail->isHTML(true); // Set email format to HTML
-            $mail->Body = $emailContent;
-            $mail->AddEmbeddedImage($imageUrl, 'logo_2u');
-
-            // Debugging output
-            echo "Attempting to send email to $email<br>";
-
-            // Uncomment the following line to actually send emails
-            $mail->send();
-
-            // Check for errors during email sending
-            if ($mail->ErrorInfo) {
-                echo 'Error sending email to ' . $email . ': ' . $mail->ErrorInfo . '<br>';
-            } else {
-                echo 'Email sent to ' . $email . '<br>';
-                // Add the email to the sentEmails array to track it
-                $sentEmails[] = $email;
-            }
+        // Check for errors during email sending
+        if ($mail->ErrorInfo) {
+            echo 'Error sending email:' . $mail->ErrorInfo . '<br>';
         } else {
-            echo "No message found for user $email today<br>";
+            echo 'Email sent';
+            // Set the message as inactive
+            $messageCollection->updateOne(['_id' => $pastDueMessage['_id']], ['$set' => ['active' => false]]);
         }
     }
 } catch (Exception $e) {

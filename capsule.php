@@ -38,6 +38,7 @@ try {
                 'message' => $messageContent,
                 'arrivalDate' => $arrivalDate,
                 'timestamp' => new MongoDB\BSON\UTCDateTime(),
+                'active' => true,
             ];
 
             $insertResult = $collection->insertOne($messageData);

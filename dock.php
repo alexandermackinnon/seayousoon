@@ -16,7 +16,7 @@ try {
     $coordsCollection = $client->CART351->Coords;
 
     // Update the Messages collection schema to include the interactionCount field
-    $messages = $messageCollection->find([], ['projection' => ['_id' => 1, 'message' => 1, 'reactions' => 1]]);
+    $messages = $messageCollection->find(['active' => true], ['projection' => ['_id' => 1, 'message' => 1, 'reactions' => 1]]);
     foreach ($messages as $message) {
         // Add the interactionCount field if it doesn't exist
         if (!isset($message['interactionCount'])) {
@@ -28,7 +28,7 @@ try {
     }
 
     // Retrieve messages from the database
-    $result = $messageCollection->find([], ['projection' => ['_id' => 1, 'message' => 1, 'reactions' => 1, 'interactionCount' => 1]]);
+    $result = $messageCollection->find(['active' => true], ['projection' => ['_id' => 1, 'message' => 1, 'reactions' => 1, 'interactionCount' => 1]]);
     $messages = iterator_to_array($result);
 
     // Format messages for JavaScript
@@ -78,7 +78,7 @@ try {
 <html>
 
 <head>
-    <title>SEA YOU SOON | A REFLECTIVE SPACE OF FORESIGHT</title>
+    <title>Dock | Sea You Soon</title>
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <script type="text/javascript" src="js/wave.js"></script>
     <meta charset="UTF-8" />
@@ -96,18 +96,19 @@ body {
     color: white;
     display: flex;
     justify-content: center;
-    height: 98vh;
+    height: 100vh;
     align-items: center;
     font-size: 2em;
     font-family: 'Inter', sans-serif;
-    font-family: 'Sometype Mono', monospace;
     flex-direction: column;
 
 }
 
 #content {
-    width: 70%;
+    width: 100%;
+    max-width: 500px;
     background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
     border-radius: 25px;
     text-align: center;
     padding: 20px;
@@ -139,7 +140,7 @@ h1 {
     </audio>
 
     <div>
-        <h1 id="h1small">Journey Through the Words of Others</h1>
+        <h1 id="h1small">DOCK</h1>
     </div>
 
     <!-- About Section -->
