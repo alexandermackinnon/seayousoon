@@ -1,6 +1,6 @@
 <?php
 
-require 'vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 use MongoDB\Client;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -8,10 +8,11 @@ use PHPMailer\PHPMailer\Exception;
 
 // Set the time zone to 'America/New_York'
 date_default_timezone_set('America/New_York');
+phpinfo();
 
 try {
     // Connect to MongoDB
-    $client = new Client("mongodb+srv://infoseayousoon:UNy8fZIiGFex0pWi@cart351.vigmtxs.mongodb.net/?retryWrites=true&w=majoritys");
+    $client = new MongoDB\Client("mongodb+srv://infoseayousoon:UNy8fZIiGFex0pWi@cart351.vigmtxs.mongodb.net/?retryWrites=true&w=majority");
 
     // Select MongoDB collections
     $userCollection = $client->CART351->Users;
@@ -125,7 +126,7 @@ try {
         }
     }
 } catch (Exception $e) {
-    echo "Error: " . $e->getMessage();
+    echo 'Caught exception: ', $e->getMessage(), "\n";
 }
 
 ?>

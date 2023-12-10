@@ -8,9 +8,10 @@ require_once('authentication.php');
 require_once __DIR__ . '/vendor/autoload.php';
 
 try {
+    // Connect to MongoDB
     $client = new MongoDB\Client("mongodb+srv://infoseayousoon:UNy8fZIiGFex0pWi@cart351.vigmtxs.mongodb.net/?retryWrites=true&w=majority");
-    // echo("Valid connection");
 
+    // Select MongoDB collections
     $collection = $client->CART351->Messages;
 
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['send_message'])) {
