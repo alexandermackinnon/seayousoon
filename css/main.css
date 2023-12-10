@@ -33,6 +33,7 @@
 
 * {
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -57,7 +58,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  padding: 120px 40px 80px;
   height: 100%;
 }
 
@@ -374,6 +375,7 @@ p {
 
 header {
   position: absolute;
+  z-index: 999;
   top: 0;
   left: 0;
   right: 0;
@@ -435,6 +437,7 @@ header .dropbtn > span {
 
 footer {
   position: absolute;
+  z-index: 999;
   bottom: 0;
   left: 0;
   right: 0;
@@ -536,6 +539,60 @@ footer .sound-toggle img {
 .capsule #dateSelector {
   align-items: center;
   gap: 20px;
+}
+
+/* ---------- DOCK ---------- */
+
+.dock .dock-ctn {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.dock #content {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  text-align: center;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.dock #messageContainer {
+  overflow-y: scroll;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  &::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+}
+
+.dock #messageText {
+  font-size: 3em;
+  opacity: 0.5;
 }
 
 /* =================== RESPONSIVE =================== */

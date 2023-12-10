@@ -83,50 +83,6 @@ try {
     <script type="text/javascript" src="js/wave.js"></script>
     <meta charset="UTF-8" />
 </head>
-<style>
-@font-face {
-    font-family: 'Rafgins';
-    src: url('assets/Rafgins.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-body {
-    background-color: #3e4450;
-    color: white;
-    display: flex;
-    justify-content: center;
-    height: 100vh;
-    align-items: center;
-    font-size: 2em;
-    font-family: 'Inter', sans-serif;
-    flex-direction: column;
-
-}
-
-#content {
-    width: 100%;
-    max-width: 500px;
-    background-color: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 25px;
-    text-align: center;
-    padding: 20px;
-}
-
-h1 {
-    font-family: Rafgins;
-}
-
-#h1small {
-    font-size: 2em;
-    margin-bottom: 40px;
-}
-
-#content {
-    margin-bottom: 40px;
-}
-</style>
 
 <body>
     <!-- Header -->
@@ -139,25 +95,23 @@ h1 {
         Your browser does not support the audio element.
     </audio>
 
-    <div>
-        <h1 id="h1small">DOCK</h1>
-    </div>
+    <!-- Dock Section -->
+    <section class="dock">
+        <div class="dock-ctn">
+            <div id="content">
+                <div id="messageContainer">
+                    <p id="messageText"></p>
+                </div>
+            </div>
 
-    <!-- About Section -->
-    <div id="content">
-        <div id="messageContainer">
-            <p id="messageText"></p>
-        </div>
-    </div>
-
-    <div>
-        <!-- Dropdown for stamps -->
-        <label for="stamps">Select a Stamp:</label>
-        <select id="stamps" onchange="logSelectedSvgPath(this.value)">
-            <option value="">Select a Stamp</option>
-            <?php
+            <div>
+                <!-- Dropdown for stamps -->
+                <label for="stamps">Select a Stamp:</label>
+                <select id="stamps" onchange="logSelectedSvgPath(this.value)">
+                    <option value="">Select a Stamp</option>
+                    <?php
             // Path to stamps folder
-            $stampsFolder = __DIR__ . '/assets/images/';
+            $stampsFolder = __DIR__ . '/assets/icons/stamps';
 
             // Get all files in the stamps folder
             $files = scandir($stampsFolder);
@@ -174,8 +128,10 @@ h1 {
                 echo "<option value=\"$file\">$file</option>";
             }
             ?>
-        </select>
-    </div>
+                </select>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <?php
@@ -216,7 +172,7 @@ function addImage(selectedValue, x, y) {
     const imageElement = document.createElement("img");
 
     // Set the source (path) of the image
-    imageElement.src = "assets/images/" + selectedValue;
+    imageElement.src = "assets/icons/stamps/" + selectedValue;
 
     // Set the position of the image using the x and y coordinates
     imageElement.style.position = "absolute";
