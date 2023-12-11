@@ -27,16 +27,18 @@ ob_start();
     <!-- About Section -->
     <section class="about">
         <div class="about-ctn">
-            <p>Sea You Soon is a platform designed to transform simple messages into timeless treasures. The project
-                was made to allow individuals to create and send virtual “bottled” messages to themselves, allowing them
-                to set the duration of the said bottle and receiving its content the once the time expires. The idea
-                behind the project is to entrust messages to the digital world and instead of immediately receiving
-                them, it is stored for a defined amount of time. As time passes by, the user may forget about the
-                message. This pause in the immediacy of communication will add a layer of anticipation and excitement to
-                each almost as if you were digging a time capsule. It encourages the beauty of patience in a society
-                where instant gratification is what people strive for. Simultaneously, it promotes mindfulness, where
-                users are invited to meditate on their current state of mind, goals, or aspirations.</p><br>
-            <p>More information coming soon.</p>
+            <p>Sea You Soon is a web platform crafted to elevate ordinary messages into everlasting keepsakes. It
+                empowers individuals to craft and dispatch virtual time capsules encapsulated in a "bottle" to their
+                future selves, allowing them to meticulously tailor the temporal voyage of these virtual treasures. The
+                essence of the project lies in entrusting messages to the digital realm, wherein instead of immediate
+                receipt, they are securely stored for a predefined duration. As the waves crash endlessly and the sands
+                of time slip away, users may inadvertently forget about their dispatched messages, fostering an element
+                of suspense akin to the act of unearthing a time capsule. This deliberate delay in the immediacy of
+                communication introduces an intriguing dimension of anticipation and excitement. Sea You Soon serves as
+                a poignant reminder of the beauty inherent in patience, a virtue often overshadowed in a society
+                relentlessly pursuing instant gratification. The platform, by design, encourages users to engage in a
+                form of digital mindfulness, prompting them to reflect on their present state of mind, contemplate their
+                goals, and nurture aspirations.</p>
         </div>
     </section>
 
