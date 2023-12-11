@@ -18,15 +18,13 @@ try {
         $user = $collection->findOne(['username' => $username]);
 
         if ($user && password_verify($password, $user['password'])) {
-            echo "Login successful!";
-            
             $_SESSION['user_id'] = $user['_id'];
             $_SESSION['user_name'] = $username;
             
-            header("Location: capsule.php");
+            header("Location: index.php");
             exit();
         } else {
-            echo "Invalid username or password.";
+            header("Location: login.php?error=Invalid username or password.");
         }
     }
 } catch (Exception $e) {
@@ -39,7 +37,7 @@ try {
 
 <head>
     <meta charset="UTF-8">
-    <title>Login | Sea You Soon</title>
+    <title>Log In | Sea You Soon</title>
     <link rel="stylesheet" type="text/css" href="./SEA YOU SOON _ A REFLECTIVE SPACE OF FORESIGHT_files/main.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
@@ -48,34 +46,56 @@ try {
     <!-- Login Section -->
     <section class="login">
         <div class="login-ctn">
-            <!-- Errors -->
-            <?php 
+            <div class="login-ctn-inner">
+                <h4>Log In</h4>
+                <!-- Errors -->
+                <?php 
                 if (isset($_GET['error'])) { 
             ?> <div class="login-message error">
-                <?php 
+                    <?php 
                     echo $_GET['error']; 
                 ?></div>
-            <?php } ?>
-            <!-- Notices -->
-            <?php 
+                <?php } ?>
+                <!-- Notices -->
+                <?php 
                 if (isset($_GET['notice'])) { 
             ?> <div class="login-message notice">
-                <?php 
+                    <?php 
                     echo $_GET['notice']; 
                 ?></div>
-            <?php } ?>
-            <form action="login.php" method="post">
-                <div class="input-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required="">
+                <?php } ?>
+                <div>
+                    <form action="login.php" method="post">
+                        <div class="input-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" required="">
+                        </div>
+                        <div class="input-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required="">
+                        </div>
+                        <button class="button blue-btn rounded-btn" type="submit" name="login"><span>Log
+                                In</span></button>
+                    </form>
                 </div>
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required="">
+                <hr>
+                <div class="other-option">
+                    <h6>Don't have an account?</h6>
+                    <a href="signup.php" class="button clear-btn rounded-btn"><span>Sign up</span>
+                    </a>
                 </div>
-                <button class="button blue-btn rounded-btn" type="submit" name="login"><span>Login</span></button>
-            </form>
+            </div>
         </div>
+        <div class="extra-ctn">
+            <div class="video-overlay">
+            </div>
+            <div class="video-bg">
+                <a href="index.php"><img class="logo" src="assets/images/stamp.png"></a>
+                <video autoplay muted loop>
+                    <source src="assets/video/water02.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
     </section>
 </body>
 
